@@ -28,10 +28,10 @@ const tweetFromAI = async () => {
 
     // Publicar el tweet generado
     const tweet = await client.v2.tweet(tweetContent);
-    console.log(`Tweet publicado: ${tweetContent}`);
+    console.log(`Tweet done: ${tweetContent}`);
 
   } catch (error) {
-    console.error('Error al generar el tweet:', error);
+    console.error('Oops tweet error:', error);
   }
 };
 
@@ -52,7 +52,7 @@ const respondAndCommentMentions = async () => {
 
       // Enviar el texto del tweet a OpenAI para generar una respuesta
       const response = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4',
         messages: [{ role: 'user', content: `Reply to this tweet: "${tweetText}"` }],
       });
 
@@ -60,7 +60,7 @@ const respondAndCommentMentions = async () => {
 
       // Responder al tweet original
       await client.v2.reply(aiReply, tweetId);
-      console.log(`Respondido a @${username} con: ${aiReply}`);
+      console.log(`Tweet about  @${username} to: ${aiReply}`);
 
       // Generar un comentario basado en la interacción
       const commentResponse = await openai.chat.completions.create({
@@ -72,14 +72,14 @@ const respondAndCommentMentions = async () => {
 
       // Publicar un tweet comentando sobre la interacción
       await client.v2.tweet(`Commenting on the conversation: ${aiComment}`);
-      console.log(`Comentario publicado: ${aiComment}`);
+      console.log(`Comment done: ${aiComment}`);
     }
   } catch (error) {
-    console.error('Error al responder menciones:', error);
+    console.error('Error to respond mentions:', error);
   }
 };
 
 // Ejecutar las funciones periódicamente
-setInterval(tweetFromAI, 3600000); // Publicar un nuevo tweet cada hora
+setInterval(tweetFromAI, 60000); // Publicar un nuevo tweet cada hora
 setInterval(respondAndCommentMentions, 60000); // Responder y comentar menciones cada minuto
 
