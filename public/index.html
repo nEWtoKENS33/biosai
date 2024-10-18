@@ -351,17 +351,44 @@
                 });
 
                 const data = await response.json();
-
+                
                 // Mostrar la respuesta del bot en el chat
                 chatBox.innerHTML += `<div class="message bot-message"><strong>Palindro AI:</strong> ${data.reply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight; // 
+                responseCounter++;
+                if (responseCounter % 5 === 0) {
+                    await tweetResponse(aiReply);
+                }
+            
             } catch (error) {
                 console.error('Error:', error);
                 chatBox.innerHTML += `<div class="message bot-message"><strong>Advanced Bot:</strong> There's some problems...</div>`;
             }
         }
 
-        
+          // Tweet response
+        async function tweetResponse(responseText) {
+            try {
+                const tweetResponse = await fetch('/api/tweet-response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        tweetContent: responseText
+                    })
+                });
+
+                if (tweetResponse.ok) {
+                    console.log('Tweet Done!:', responseText);
+                } else {
+                    console.error('Tweet Error.');
+                }
+
+            } catch (error) {
+                console.error('Ooops! Tweet Error', error);
+            }
+        }
         
 
     </script>
