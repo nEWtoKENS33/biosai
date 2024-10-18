@@ -24,12 +24,12 @@
         #start-screen {
             width: 100%;
             height: 100%;
-            background-image: url('biosgiff.gif');
-            background-size: cover; /* Ajusta el GIF para cubrir toda la pantalla */
+            background-image: url('biosgiff22.gif');
+            background-size: cover; 
             background-position: center; /* Centra el GIF */
             display: flex;
-            justify-content: flex-end; /* Mueve el contenido a la derecha */
-            align-items: center; /* Centra verticalmente */
+            justify-content: flex-end; 
+            align-items: center; 
         }
 
         /* Ocultamos la segunda parte inicialmente */
@@ -334,7 +334,7 @@
             // Mostrar el mensaje del usuario en el chat
             const chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `<div class="message user-message"><strong>User:</strong> ${userInput}</div>`;
-            document.getElementById('user-input').value = ''; // Limpiar el campo de texto
+            document.getElementById('user-input').value = ''; 
 
             // Llamar al servidor para generar la respuesta del bot
             try {
@@ -352,10 +352,10 @@
 
                 // Mostrar la respuesta del bot en el chat
                 chatBox.innerHTML += `<div class="message bot-message"><strong>Palindro AI:</strong> ${data.reply}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight; // Desplazar el chat hacia abajo
+                chatBox.scrollTop = chatBox.scrollHeight; // 
             } catch (error) {
                 console.error('Error:', error);
-                chatBox.innerHTML += `<div class="message bot-message"><strong>Advanced Bot:</strong> Theres some problems..</div>`;
+                chatBox.innerHTML += `<div class="message bot-message"><strong>Advanced Bot:</strong> There's some problems...</div>`;
             }
         }
 
