@@ -338,7 +338,7 @@
 
             // Llamar al servidor para generar la respuesta del bot
             try {
-                const response = await fetch('/api/generate-response', {
+                const response = await fetch('https://biosai.up.railway.app/api/generate-response', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
