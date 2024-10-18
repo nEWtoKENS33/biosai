@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIOS | Biological Intelligence Over Systems</title>
-    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 
     <style>
         /* Estilo general */
@@ -71,19 +71,17 @@
             color: #000;
         }
 
-        /* Tamaño fijo para el contenido de las pestañas */
         .tab-content {
-            height: 400px; /* Altura fija para el contenido de cada pestaña */
+            height: 400px; 
             overflow-y: auto;
             box-sizing: border-box;
         }
 
-        /* Tamaño fijo para la tabla */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            table-layout: fixed; /* Ancho fijo */
+            table-layout: fixed; 
         }
 
         th, td {
@@ -91,7 +89,7 @@
             padding: 10px;
             text-align: left;
             width: 25%;
-            height: 50px; /* Altura fija */
+            height: 50px; 
         }
 
         th {
@@ -115,7 +113,6 @@
 
      
 
-        /* Chatbox para el bot en la pestaña Advanced */
         #chat-box {
             border: 1px solid #000080;
             padding: 10px;
@@ -142,14 +139,11 @@
 </head>
 <body>
 
-    <!-- Contenido del inicio -->
     <div id="start-screen">
-        <button onclick="showNextContent()"></button>
+        <button onclick="showNextContent(), startApp()"></button>
     </div>
 
-    <!-- Contenido adicional que se muestra tras el clic -->
     <div id="second-content">
-        <!-- Pestañas estilo BIOS -->
         <div class="tabs">
             <div id="tab-main" class="active" onclick="showTab('main')">Main</div>
             <div id="tab-advanced" onclick="showTab('advanced')">Advanced</div>
@@ -160,7 +154,6 @@
             <div id="tab-exit" onclick="showTab('exit')">Exit</div>
         </div>
 
-        <!-- Contenido de cada pestaña -->
         <div id="content-main" class="tab-content">
             <h1>Main Settings</h1>
             <table>
@@ -182,7 +175,6 @@
             <p>WARNING: Setting wrong values in below sections may cause system malfunction.</p>
            
         
-            <!-- Sección del chatbot en la pestaña Advanced -->
             <h2>Palindro AI</h2>
             <div id="chat-box" style="border: 1px solid #000080; padding: 10px; background-color: #F0F0F0; height: 150px; overflow-y: scroll; margin-top: 20px;">
                 <p><strong>Palindro AI:</strong> What do you want stupid human?</p>
@@ -294,11 +286,22 @@
 
     <script>
         // Mostrar la segunda parte del contenido y ocultar el inicio
+        const audio = new Audio('/assets/music.m4a');
+
         function showNextContent() {
             document.getElementById('start-screen').style.display = 'none';
             document.getElementById('second-content').style.display = 'block';
         }
+        function startApp() {
+            // Reproducir el archivo de sonido
+            audio.play();
 
+            // Ocultar la pantalla de inicio (opcional)
+            document.getElementById('start-screen').style.display = 'none';
+
+            // Mostrar la segunda parte de la página o hacer cualquier otra acción
+            // Aquí podrías navegar a la siguiente sección o cargar contenido.
+        }
         // Cambiar entre pestañas y mostrar el contenido correspondiente
         function showTab(tabName) {
             // Ocultar todas las pestañas
