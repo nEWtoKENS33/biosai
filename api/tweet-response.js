@@ -1,6 +1,5 @@
 const { TwitterApi } = require('twitter-api-v2');
 
-// Configurar las credenciales de la API de Twitter
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
   appSecret: process.env.TWITTER_API_KEY_SECRET,
@@ -18,7 +17,7 @@ module.exports = async (req, res) => {
       res.status(200).json({ success: true, tweetId: tweet.data.id });
     } catch (error) {
       console.error('Error al publicar el tweet:', error);
-      res.status(500).json({ success: false, error: 'Error al publicar el tweet.' });
+      res.status(500).json({ success: false, error: 'Problems to tweet it.' });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
