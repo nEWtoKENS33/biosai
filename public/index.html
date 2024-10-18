@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIOS | Biological Intelligence Over Systems</title>
-    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
 
     <style>
         /* Estilo general */
@@ -286,23 +286,18 @@
 
     <script>
         // Mostrar la segunda parte del contenido y ocultar el inicio
-        const audio = new Audio('/assets/music.m4a');
+        const audio = new Audio('./assets/music.m4a');
 
         function showNextContent() {
             document.getElementById('start-screen').style.display = 'none';
             document.getElementById('second-content').style.display = 'block';
         }
         function startApp() {
-            // Reproducir el archivo de sonido
             audio.play();
 
-            // Ocultar la pantalla de inicio (opcional)
             document.getElementById('start-screen').style.display = 'none';
-
-            // Mostrar la segunda parte de la página o hacer cualquier otra acción
-            // Aquí podrías navegar a la siguiente sección o cargar contenido.
         }
-        // Cambiar entre pestañas y mostrar el contenido correspondiente
+        
         function showTab(tabName) {
             // Ocultar todas las pestañas
             const tabContents = document.getElementsByClassName('tab-content');
