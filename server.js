@@ -39,7 +39,7 @@ app.post('/api/generate-response', async (req, res) => {
   
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Servidor on port ${PORT}`);
 });
