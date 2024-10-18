@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOS | Biological Intelligence Over Systems</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+    <style>
+        /* Estilo general */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #00FF00;
+            justify-content: center;
+            background-size: contain;
+            overflow: hidden;
+        }
+
+        /* Contenedor inicial que ocupa toda la pantalla */
+        #start-screen {
+            width: 100%;
+            height: 100%;
+            background-image: url('biosgiff.gif');
+            background-size: cover; /* Ajusta el GIF para cubrir toda la pantalla */
+            background-position: center; /* Centra el GIF */
+            display: flex;
+            justify-content: flex-end; /* Mueve el contenido a la derecha */
+            align-items: center; /* Centra verticalmente */
+        }
+
+        /* Ocultamos la segunda parte inicialmente */
+        #second-content {
+            display: none;
+            width: 80%;
+            height: 80%;
+            background-color: #D0D0D0;
+            border: 2px solid #000080;
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo de las pestañas */
+        .tabs {
+            display: flex;
+            background-color: #000080;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .tabs div {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            border-right: 1px solid #D0D0D0;
+        }
+
+        .tabs div:last-child {
+            border-right: none;
+        }
+
+        /* Estilo para la pestaña activa */
+        .tabs div.active {
+            background-color: #F0F0F0;
+            color: #000;
+        }
+
+        /* Tamaño fijo para el contenido de las pestañas */
+        .tab-content {
+            height: 400px; /* Altura fija para el contenido de cada pestaña */
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        /* Tamaño fijo para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed; /* Ancho fijo */
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+            width: 25%;
+            height: 50px; /* Altura fija */
+        }
+
+        th {
+            background-color: #000080;
+            color: white;
+        }
+
+        td {
+            background-color: #F0F0F0;
+        }
+
+        /* Botón de estilo BIOS */
+        button {
+            background-color: transparent;
+            padding: 80px 70px;
+            cursor: pointer;
+            margin-bottom: 200px;
+            margin-right: 350px;
+            transition: background-color 0.3s ease;
+        }
+
+     
+
+        /* Chatbox para el bot en la pestaña Advanced */
+        #chat-box {
+            border: 1px solid #000080;
+            padding: 10px;
+            background-color: #F0F0F0;
+            height: 150px; /* Altura fija */
+            overflow-y: scroll;
+            margin-top: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+        }
+
+        .user-message {
+            text-align: right;
+            color: blue;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenido del inicio -->
+    <div id="start-screen">
+        <button onclick="showNextContent()"></button>
+    </div>
+
+    <!-- Contenido adicional que se muestra tras el clic -->
+    <div id="second-content">
+        <!-- Pestañas estilo BIOS -->
+        <div class="tabs">
+            <div id="tab-main" class="active" onclick="showTab('main')">Main</div>
+            <div id="tab-advanced" onclick="showTab('advanced')">Advanced</div>
+            <div id="tab-pci" onclick="showTab('pci')">PCI/PnP</div>
+            <div id="tab-boot" onclick="showTab('boot')">Boot</div>
+            <div id="tab-security" onclick="showTab('security')">Security</div>
+            <div id="tab-chipset" onclick="showTab('chipset')">Chipset</div>
+            <div id="tab-exit" onclick="showTab('exit')">Exit</div>
+        </div>
+
+        <!-- Contenido de cada pestaña -->
+        <div id="content-main" class="tab-content">
+            <h1>Main Settings</h1>
+            <table>
+                <tr>
+                    <th>Setting</th>
+                </tr>
+                <tr>
+                    <td>Hello boy! I'm just created Palindro AI but this shitty AI thinks he is more inteligent than human.
+                         So thats why I'm deployed Biological Intelligence Over System (BIOS). I need you to beat them Palindro is waiting for you on Advanced
+                        He will be live if we reach the bonding curve. <br>
+                        Regards!</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div id="content-advanced" class="tab-content" style="display: none;">
+            <h1>Advanced Settings</h1>
+            <p>WARNING: Setting wrong values in below sections may cause system malfunction.</p>
+           
+        
+            <!-- Sección del chatbot en la pestaña Advanced -->
+            <h2>Palindro AI</h2>
+            <div id="chat-box" style="border: 1px solid #000080; padding: 10px; background-color: #F0F0F0; height: 150px; overflow-y: scroll; margin-top: 20px;">
+                <p><strong>Palindro AI:</strong> What do you want stupid human?</p>
+            </div>
+            <input type="text" id="user-input" placeholder="Text here.." style="width: 80%; padding: 5px;">
+            <button onclick="sendMessage()" style="padding: 5px 10px; margin-top: 10px;">Send</button>
+        </div>
+
+        <div id="content-pci" class="tab-content" style="display: none;">
+            <h1>PCI/PnP Settings</h1>
+            <table>
+                <tr>
+                    <th>Slot</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Ticker</td>
+                    <td>$BIOS</td>
+                </tr>
+                <tr>
+                    <td>Launch</td>
+                    <td>Pumpfun</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="content-boot" class="tab-content" style="display: none;">
+            <h1>Boot Settings</h1>
+            <table>
+                <tr>
+                    <th>Boot Option</th>
+                    <th>Priority</th>
+                </tr>
+                <tr>
+                    <td>CA</td>
+                    <td>TBA</td>
+                </tr>
+                <tr>
+                    <td>Supply</td>
+                    <td>1B</td>
+                </tr>
+                <tr>
+                    <td>1Billion MC</td>
+                    <td>Yes</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="content-security" class="tab-content" style="display: none;">
+            <h1>Security Settings</h1>
+            <table>
+                <tr>
+                    <th>Security Option</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>X</td>
+                    <td><a href="https://x.com/bios_solana" target="_blank">ANNOUNCES</a></td>
+                </tr>
+                <tr>
+                    <td>Telegram</td>
+                    <td><a href="https://t.me/Bios_Solana" target="_blank">COMMUNITY</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="content-chipset" class="tab-content" style="display: none;">
+            <h1>Chipset Settings</h1>
+            <table>
+                <tr>
+                    <th>Configuration</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Northbridge</td>
+                    <td>Auto</td>
+                </tr>
+                <tr>
+                    <td>Southbridge</td>
+                    <td>Enabled</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="content-exit" class="tab-content" style="display: none;">
+            <h1>Exit Menu</h1>
+            <table>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Save Changes and Exit</td>
+                    <td>Save settings and exit the BIOS</td>
+                </tr>
+                <tr>
+                    <td>Discard Changes and Exit</td>
+                    <td>Exit without saving changes</td>
+                </tr>
+                <tr>
+                    <td>Load Setup Defaults</td>
+                    <td>Restore default settings</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>F1: General Help | F10: Save and Exit | ESC: Exit</p>
+    </div>
+
+    <script>
+        // Mostrar la segunda parte del contenido y ocultar el inicio
+        function showNextContent() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('second-content').style.display = 'block';
+        }
+
+        // Cambiar entre pestañas y mostrar el contenido correspondiente
+        function showTab(tabName) {
+            // Ocultar todas las pestañas
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+            }
+
+            // Quitar clase 'active' de todas las pestañas
+            const tabs = document.getElementsByClassName('tabs')[0].children;
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Mostrar la pestaña seleccionada y añadir clase 'active'
+            document.getElementById('content-' + tabName).style.display = 'block';
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+
+        document.getElementById("user-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevenir el comportamiento por defecto del Enter
+                sendMessage(); // Llamar a la función para enviar el mensaje
+            }
+        });
+
+        // Función para manejar las preguntas y respuestas del bot
+           // Función para manejar las preguntas y respuestas del bot
+           async function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput.trim()) return; // No enviar si el campo está vacío
+
+            // Mostrar el mensaje del usuario en el chat
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `<div class="message user-message"><strong>User:</strong> ${userInput}</div>`;
+            document.getElementById('user-input').value = ''; // Limpiar el campo de texto
+
+            // Llamar al servidor para generar la respuesta del bot
+            try {
+                const response = await fetch('http://localhost:5500/api/generate-response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: userInput
+                    })
+                });
+
+                const data = await response.json();
+
+                // Mostrar la respuesta del bot en el chat
+                chatBox.innerHTML += `<div class="message bot-message"><strong>Palindro AI:</strong> ${data.reply}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Desplazar el chat hacia abajo
+            } catch (error) {
+                console.error('Error:', error);
+                chatBox.innerHTML += `<div class="message bot-message"><strong>Advanced Bot:</strong> Ocurrió un error al procesar la solicitud.</div>`;
+            }
+        }
+
+        
+
+    </script>
+
+</body>
+</html>
